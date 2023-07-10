@@ -1,0 +1,24 @@
+import pandas as pd
+import numpy as np
+data=pd.read_excel("Desktop/Unemployment_Rate_upto_11_2020.xlsx")
+data
+data.head()
+data.tail()
+data.info()
+data.describe()
+data.shape
+x = data['Region']
+x
+y=data[" Estimated Unemployment Rate (%)"]
+y
+import plotly.express as px
+import matplotlib.pyplot as plt
+fg=px.bar(data,x='Region',y=' Estimated Unemployment Rate (%)',color='Region',title='Unemployment Rate by Bar graph',template='plotly')
+fg.update_layout(xaxis={'categoryorder':'total descending'})
+fg.show()
+fg=px.bar(data,x='Region.1',y=' Estimated Unemployment Rate (%)',color='Region',title='Unemployment Rate by Bar graph',template='plotly')
+fg.update_layout(xaxis={'categoryorder':'total descending'})
+fg.show()
+fg=px.histogram(data,x='Region',y=' Estimated Unemployment Rate (%)',color='Region',title='Unemployment Rate by Bar graph',template='plotly')
+fg.update_layout(xaxis={'categoryorder':'total descending'})
+fg.show()
