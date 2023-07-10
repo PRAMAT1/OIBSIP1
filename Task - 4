@@ -1,0 +1,44 @@
+import pandas as pd
+import numpy as np
+spam=pd.read_excel("Desktop/spam.xlsx")
+spam
+spam.head()
+spam.tail()
+spam.info()
+spam.describe()
+spam.shape
+spam.columns
+import matplotlib.pyplot as plt
+import seaborn as sns
+df=spam.rename(columns={'v1':'Target','v2':'Message'})
+df.isnull().sum()
+df.duplicated().sum()
+from sklearn.preprocessing import LabelEncoder
+encoder=LabelEncoder()
+df['Target']=encoder.fit_transform(df['Target'])
+df['Target']
+df.head()
+df.size
+x=df['Message']
+y=df['Target']
+x
+y
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+iris = load_iris()
+X_train, X_test, y_train, y_test = train_test_split(iris.data, iris.target, test_size=0.2)
+from sklearn.feature_extraction.text import CountVectorizer
+cv = CountVectorizer()
+X_train = np.array(['This is the first document', 'This is the second document', 'And this is the third one',
+                    'Is this the first document?', 'This is not the first document'])
+y_train = np.array([0, 0, 0, 1, 1])
+vectorizer = CountVectorizer()
+X_train_vec = vectorizer.fit_transform(X_train)
+from sklearn.naive_bayes import MultinomialNB
+nb = MultinomialNB()
+nb.fit(X_train_vec, y_train)
+X_test = np.array(['This is the fourth document', 'This is the fifth document', 'And this is the sixth one'])
+X_test_vec = vectorizer.transform(X_test)
+y_pred = nb.predict(X_test_vec)
+y_pred
