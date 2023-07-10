@@ -1,0 +1,29 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+sales=pd.read_excel('Desktop/Advertising.xlsx')
+sales
+sales.head()
+sales.tail()
+sales.info()
+sales.describe()
+sales.shape
+df=sales.drop(columns=['Unnamed: 0'])
+df
+x=df.iloc[:, 0:-1]
+x
+y=df.iloc[:,-1]
+y
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(x,y,test_size=0.2)
+X_train
+X_test
+y_train
+y_test
+from sklearn.linear_model import LinearRegression
+reg = LinearRegression()
+reg.fit(X, y)
+y_pred = reg.predict(X_test)
+print(y_pred)
+plt.plot(X,y)
+plt.show()
+plt.scatter(X,y)
