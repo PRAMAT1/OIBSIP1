@@ -27,3 +27,22 @@ x=df['sepal Length (cm)']
 y=df['sepal width (cm)']
 plt.scatter(x,y,c='r',s=50,alpha=0.3,cmap='viridis')
 plt.colorbor()
+fig=plt.figure()
+ax=plt.axes(projection='3d') 
+x=df['sepal width (cm)'].values 
+y=df['sepal length (cm)'].values 
+z=df['petal width (cm)'].values 
+ax.set_xlabel("sepal width (cm)") 
+ax.set_ylabel("sepal length (cm)") 
+ax.set_zlabel("pedal width (cm)") 
+ax.scatter(x, y, z, c='r', marker='o') 
+plt.show()
+def f(x, y):
+    return np.sin(x) ** 10 + np.cos(y)
+X, Y = np.meshgrid(x, y) 
+Z = f(X, Y)
+plt.contour(X, Y, Z, colors='blue') 
+plt.contourf(X, Y, Z, 20, cmap='RdGy') 
+plt.colorbar();
+sns.pairplot(df)
+df.plot(kind='density',subplots = True , layout = (3,3), sharex = False)
