@@ -1,0 +1,29 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris
+iris=load_iris()
+df=pd.DataFrame(iris.data, columns=iris.feature_names)
+df['Target']=iris.target
+print(df)
+df.describe()
+df.info()
+df.shape
+df.min()
+df.max()
+df.median()
+df.head()
+df.tail()
+import seaborn as sns
+x=df['sepal Length (cm)']
+ax=sns.histplot(x,bins=10)
+plot.show()
+ax=sns.displot(x,bins=10)
+df.boxplot()
+df.hist()
+df.corr()
+sns.heatmap(df.corr())
+x=df['sepal Length (cm)']
+y=df['sepal width (cm)']
+plt.scatter(x,y,c='r',s=50,alpha=0.3,cmap='viridis')
+plt.colorbor()
