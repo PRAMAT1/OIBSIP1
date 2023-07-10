@@ -1,0 +1,41 @@
+import pandas as pd
+import numpy as np
+car=pd.read_excel("Desktop/train-data.xlsx")
+car
+car.corr()
+import matplotlib.pyplot as plt
+import seaborn as sns
+plt.figure(figsize=(20, 15))
+correlation = car.corr()
+sns.heatmap(correlation,annot=True)
+plt.show()
+sns.set_style("whitegrid")
+plt.figure(figsize=(5,5))
+sns.displot(car.Price)
+plt.show()
+sns.set_style("whitegrid")
+plt.figure(figsize=(15,10))
+sns.displot(car.Engine)
+plt.show()
+sns.set_style("whitegrid")
+plt.figure(figsize=(15,10))
+sns.displot(car.Kilometers_Driven)
+plt.show()
+sns.set_style("whitegrid")
+plt.figure(figsize=(15,10))
+sns.displot(car.Transmission)
+plt.show()
+car.info()
+car.head()
+car.tail()
+car.describe()
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+iris = load_iris()
+X_train, X_test, y_train, y_test = train_test_split(iris.data, iris.target, test_size=0.2)
+from sklearn.linear_model import LinearRegression
+reg = LinearRegression()
+reg.fit(X_train,y_train)
+y_pred = reg.predict(X_test)
+print(y_pred)
